@@ -25,6 +25,7 @@ export default {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
           glow: "hsl(var(--primary-glow))",
+          dim: "hsl(var(--primary-dim))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -41,10 +42,12 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+          glow: "hsl(var(--accent-glow))",
         },
         success: {
           DEFAULT: "hsl(var(--success))",
           foreground: "hsl(var(--success-foreground))",
+          glow: "hsl(var(--success-glow))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -66,42 +69,97 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+          from: { height: "0", opacity: "0" },
+          to: { height: "var(--radix-accordion-content-height)", opacity: "1" },
         },
         "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+          from: { height: "var(--radix-accordion-content-height)", opacity: "1" },
+          to: { height: "0", opacity: "0" },
         },
         "pulse-neural": {
-          "0%, 100%": { opacity: "1", transform: "scale(1)" },
-          "50%": { opacity: "0.7", transform: "scale(1.05)" },
+          "0%, 100%": { 
+            opacity: "1", 
+            transform: "scale(1)",
+            boxShadow: "0 0 20px hsl(180 100% 50% / 0.3)"
+          },
+          "50%": { 
+            opacity: "0.85", 
+            transform: "scale(1.03)",
+            boxShadow: "0 0 30px hsl(180 100% 50% / 0.5)"
+          },
         },
-        "shimmer": {
-          "0%": { backgroundPosition: "-200% center" },
-          "100%": { backgroundPosition: "200% center" },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
         },
-        "float": {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-10px)" },
+        "shimmer-slow": {
+          "0%": { backgroundPosition: "-100% 0" },
+          "100%": { backgroundPosition: "100% 0" },
         },
-        "glow": {
-          "0%, 100%": { filter: "brightness(1)" },
-          "50%": { filter: "brightness(1.5)" },
+        float: {
+          "0%, 100%": { transform: "translateY(0px) scale(1)" },
+          "50%": { transform: "translateY(-12px) scale(1.02)" },
+        },
+        glow: {
+          "0%, 100%": { 
+            opacity: "1", 
+            filter: "brightness(1) drop-shadow(0 0 10px hsl(180 100% 50% / 0.3))" 
+          },
+          "50%": { 
+            opacity: "0.9", 
+            filter: "brightness(1.15) drop-shadow(0 0 20px hsl(180 100% 50% / 0.5))" 
+          },
         },
         "slide-in-right": {
-          "0%": { transform: "translateX(100%)" },
-          "100%": { transform: "translateX(0)" },
+          "0%": { 
+            transform: "translateX(100%)",
+            opacity: "0"
+          },
+          "100%": { 
+            transform: "translateX(0)",
+            opacity: "1"
+          },
+        },
+        "slide-out-right": {
+          "0%": { 
+            transform: "translateX(0)",
+            opacity: "1"
+          },
+          "100%": { 
+            transform: "translateX(100%)",
+            opacity: "0"
+          },
+        },
+        "fade-in": {
+          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "scale-in": {
+          "0%": { opacity: "0", transform: "scale(0.95)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
+        "glow-pulse": {
+          "0%, 100%": { 
+            boxShadow: "0 0 20px hsl(180 100% 50% / 0.3), 0 0 40px hsl(180 100% 50% / 0.1)" 
+          },
+          "50%": { 
+            boxShadow: "0 0 30px hsl(180 100% 50% / 0.5), 0 0 60px hsl(180 100% 50% / 0.2)" 
+          },
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "pulse-neural": "pulse-neural 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        "shimmer": "shimmer 3s linear infinite",
-        "float": "float 6s ease-in-out infinite",
-        "glow": "glow 2s ease-in-out infinite",
-        "slide-in-right": "slide-in-right 0.3s ease-out",
+        "accordion-down": "accordion-down 0.3s ease-out",
+        "accordion-up": "accordion-up 0.3s ease-out",
+        "pulse-neural": "pulse-neural 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        shimmer: "shimmer 3s linear infinite",
+        "shimmer-slow": "shimmer-slow 8s linear infinite",
+        float: "float 4s ease-in-out infinite",
+        glow: "glow 2.5s ease-in-out infinite",
+        "slide-in-right": "slide-in-right 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+        "slide-out-right": "slide-out-right 0.3s cubic-bezier(0.4, 0, 1, 1)",
+        "fade-in": "fade-in 0.5s ease-out",
+        "scale-in": "scale-in 0.3s ease-out",
+        "glow-pulse": "glow-pulse 2s ease-in-out infinite",
       },
       backdropBlur: {
         xs: "2px",

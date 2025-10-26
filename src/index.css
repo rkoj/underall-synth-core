@@ -8,69 +8,68 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* UNDERGLASS.AI Design System */
+    /* BRAIN ALL Design System - Professional AI Interface */
     /* Base Colors - Deep Black Foundation */
-    --background: 240 6% 5%;           /* #0C0C0E - Deep black */
-    --foreground: 210 20% 88%;         /* Light gray for text */
-
-    /* Glass Layers */
-    --glass: 240 6% 10%;               /* #1A1A1F - Graphite glass */
-    --glass-border: 180 100% 50%;      /* #00FFFF - Cyan glass edge */
+    --background: 240 8% 4%;
+    --foreground: 210 40% 98%;
+    --card: 240 7% 7%;
+    --card-foreground: 210 40% 98%;
+    --popover: 240 8% 6%;
+    --popover-foreground: 210 40% 98%;
     
-    /* Card System */
-    --card: 240 6% 8%;                 /* Slightly lighter than bg */
-    --card-foreground: 210 20% 88%;
-
-    --popover: 240 6% 10%;
-    --popover-foreground: 210 20% 88%;
-
     /* Primary - Cyan Intelligence */
-    --primary: 180 100% 50%;           /* #00FFFF - Active intelligence */
-    --primary-foreground: 240 6% 5%;
-    --primary-glow: 180 100% 65%;      /* Lighter cyan for glow */
-
-    /* Secondary - Graphite Layer */
-    --secondary: 240 6% 15%;
-    --secondary-foreground: 210 20% 88%;
-
-    /* Muted - Subtle Intelligence */
-    --muted: 240 6% 12%;
-    --muted-foreground: 210 10% 65%;
-
+    --primary: 180 100% 50%;
+    --primary-foreground: 240 8% 4%;
+    --primary-glow: 180 100% 65%;
+    --primary-dim: 180 100% 35%;
+    
+    /* Secondary */
+    --secondary: 240 6% 16%;
+    --secondary-foreground: 210 40% 98%;
+    
+    /* Muted */
+    --muted: 240 6% 18%;
+    --muted-foreground: 215 20% 65%;
+    
     /* Accent - Amber Alert */
-    --accent: 30 100% 50%;             /* #FF9500 - Amber warning */
-    --accent-foreground: 240 6% 5%;
-
-    /* Success - Neon Active */
-    --success: 158 100% 50%;           /* #00FF9D - Active state */
-    --success-foreground: 240 6% 5%;
-
+    --accent: 30 100% 55%;
+    --accent-foreground: 240 8% 4%;
+    --accent-glow: 30 100% 70%;
+    
+    /* Success - Neon Green */
+    --success: 158 100% 50%;
+    --success-glow: 158 100% 65%;
+    
     /* Destructive */
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 20% 98%;
-
-    /* Borders & Inputs */
-    --border: 240 6% 18%;
-    --input: 240 6% 12%;
-    --ring: 180 100% 50%;              /* Cyan focus ring */
-
-    --radius: 0.75rem;
-
-    /* Gradients */
-    --gradient-neural: linear-gradient(135deg, hsl(180 100% 50% / 0.1), hsl(158 100% 50% / 0.1));
-    --gradient-glass: linear-gradient(180deg, hsl(240 6% 12% / 0.4), hsl(240 6% 8% / 0.6));
-    --gradient-spectral: linear-gradient(90deg, hsl(180 100% 50% / 0.2), hsl(30 100% 50% / 0.2), hsl(158 100% 50% / 0.2));
+    --destructive-foreground: 210 40% 98%;
     
-    /* Shadows & Glows */
-    --shadow-neural: 0 10px 40px -10px hsl(180 100% 50% / 0.4);
-    --shadow-glass: 0 8px 32px 0 hsl(240 6% 5% / 0.6);
-    --glow-cyan: 0 0 30px hsl(180 100% 50% / 0.5);
-    --glow-amber: 0 0 30px hsl(30 100% 50% / 0.5);
-    --glow-neon: 0 0 30px hsl(158 100% 50% / 0.5);
-
-    /* Animations */
-    --transition-neural: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-glass: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Borders & Inputs */
+    --border: 240 8% 15%;
+    --input: 240 8% 12%;
+    --ring: 180 100% 50%;
+    
+    /* Radius */
+    --radius: 0.875rem;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(180 100% 50% / 0.15), hsl(180 100% 50% / 0.05));
+    --gradient-glow: linear-gradient(135deg, hsl(180 100% 50% / 0.25), hsl(158 100% 50% / 0.15));
+    --gradient-ambient: radial-gradient(ellipse at top, hsl(180 100% 50% / 0.08), transparent 50%);
+    
+    /* Shadows */
+    --shadow-glow-cyan: 0 0 40px hsl(180 100% 50% / 0.25), 0 0 20px hsl(180 100% 50% / 0.15);
+    --shadow-glow-amber: 0 0 40px hsl(30 100% 55% / 0.25), 0 0 20px hsl(30 100% 55% / 0.15);
+    --shadow-glow-neon: 0 0 40px hsl(158 100% 50% / 0.25), 0 0 20px hsl(158 100% 50% / 0.15);
+    --shadow-depth: 0 20px 40px -15px hsl(240 8% 0% / 0.5);
+    --shadow-glass: 0 8px 32px hsl(180 100% 50% / 0.08);
+    
+    /* Charts */
+    --chart-1: 180 100% 50%;
+    --chart-2: 158 100% 50%;
+    --chart-3: 30 100% 55%;
+    --chart-4: 240 60% 60%;
+    --chart-5: 280 70% 60%;
   }
 }
 
@@ -84,29 +83,80 @@ All colors MUST be HSL.
     font-family: 'JetBrains Mono', 'Courier New', monospace;
   }
 
-  /* Glass Morphism Base */
-  .glass-panel {
-    @apply backdrop-blur-xl bg-glass/40 border border-glass-border/20;
-    box-shadow: var(--shadow-glass);
-  }
+/* Glass Morphism Effects */
+.glass-panel {
+  background: linear-gradient(135deg, 
+    hsl(240 8% 7% / 0.7), 
+    hsl(240 8% 5% / 0.6)
+  );
+  backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid hsl(180 100% 50% / 0.12);
+  box-shadow: 
+    0 8px 32px hsl(240 8% 0% / 0.4),
+    inset 0 1px 0 hsl(180 100% 50% / 0.05);
+}
 
-  .glass-intense {
-    @apply backdrop-blur-2xl bg-glass/60 border border-glass-border/30;
-    box-shadow: var(--shadow-neural);
-  }
+.glass-intense {
+  background: linear-gradient(135deg, 
+    hsl(240 8% 8% / 0.85), 
+    hsl(240 8% 6% / 0.75)
+  );
+  backdrop-filter: blur(32px) saturate(200%);
+  border: 1px solid hsl(180 100% 50% / 0.18);
+  box-shadow: 
+    0 12px 40px hsl(240 8% 0% / 0.5),
+    inset 0 1px 0 hsl(180 100% 50% / 0.08),
+    0 0 0 1px hsl(240 8% 0% / 0.5);
+}
 
-  /* Neural Glow Effects */
-  .glow-cyan {
-    box-shadow: var(--glow-cyan);
-  }
+.glass-soft {
+  background: linear-gradient(135deg, 
+    hsl(240 8% 10% / 0.5), 
+    hsl(240 8% 8% / 0.4)
+  );
+  backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid hsl(180 100% 50% / 0.08);
+  box-shadow: 
+    0 4px 16px hsl(240 8% 0% / 0.3),
+    inset 0 1px 0 hsl(180 100% 50% / 0.03);
+}
 
-  .glow-amber {
-    box-shadow: var(--glow-amber);
-  }
+/* Glow Effects */
+.glow-cyan {
+  text-shadow: 
+    0 0 30px hsl(180 100% 50% / 0.4),
+    0 0 15px hsl(180 100% 50% / 0.3),
+    0 0 5px hsl(180 100% 50% / 0.2);
+  filter: drop-shadow(0 0 10px hsl(180 100% 50% / 0.3));
+}
 
-  .glow-neon {
-    box-shadow: var(--glow-neon);
-  }
+.glow-neon {
+  text-shadow: 
+    0 0 30px hsl(158 100% 50% / 0.4),
+    0 0 15px hsl(158 100% 50% / 0.3),
+    0 0 5px hsl(158 100% 50% / 0.2);
+  filter: drop-shadow(0 0 10px hsl(158 100% 50% / 0.3));
+}
+
+.glow-amber {
+  text-shadow: 
+    0 0 30px hsl(30 100% 55% / 0.4),
+    0 0 15px hsl(30 100% 55% / 0.3),
+    0 0 5px hsl(30 100% 55% / 0.2);
+  filter: drop-shadow(0 0 10px hsl(30 100% 55% / 0.3));
+}
+
+.glow-box-cyan {
+  box-shadow: var(--shadow-glow-cyan);
+}
+
+.glow-box-amber {
+  box-shadow: var(--shadow-glow-amber);
+}
+
+.glow-box-neon {
+  box-shadow: var(--shadow-glow-neon);
+}
 
   /* Pulse Animation */
   @keyframes pulse-neural {
