@@ -89,6 +89,10 @@ export default {
           "0%, 100%": { filter: "brightness(1)" },
           "50%": { filter: "brightness(1.5)" },
         },
+        "slide-in-right": {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -97,6 +101,7 @@ export default {
         "shimmer": "shimmer 3s linear infinite",
         "float": "float 6s ease-in-out infinite",
         "glow": "glow 2s ease-in-out infinite",
+        "slide-in-right": "slide-in-right 0.3s ease-out",
       },
       backdropBlur: {
         xs: "2px",
