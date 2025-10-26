@@ -3,32 +3,11 @@ import { Send, Sparkles, Paperclip, Mic, MoreVertical } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import underallLogo from "@/assets/underall-logo.png";
-
-interface Message {
-  id: number;
-  role: "user" | "assistant";
-  content: string;
-  timestamp: string;
-}
+import { useStreamingChat } from "@/hooks/useStreamingChat";
 
 export const ChatArea = () => {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 1,
-      role: "assistant",
-      content: "💪 PERFEITO! Sistema Brain All está operacional!\n\nTodas as funcionalidades ativas e prontas para uso profissional.",
-      timestamp: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
-    },
-    {
-      id: 2,
-      role: "user",
-      content: "Mostre-me o status completo do sistema",
-      timestamp: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
-    },
-  ]);
-
+  const { messages, sendMessage, isLoading } = useStreamingChat();
   const [input, setInput] = useState("");
-  const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -36,30 +15,9 @@ export const ChatArea = () => {
   }, [messages]);
 
   const handleSend = () => {
-    if (!input.trim() || isTyping) return;
-    
-    const newMessage: Message = {
-      id: messages.length + 1,
-      role: "user",
-      content: input,
-      timestamp: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
-    };
-    
-    setMessages([...messages, newMessage]);
+    if (!input.trim() || isLoading) return;
+    sendMessage(input);
     setInput("");
-    setIsTyping(true);
-    
-    // Simulate AI response
-    setTimeout(() => {
-      const aiResponse: Message = {
-        id: messages.length + 2,
-        role: "assistant",
-        content: "Entendido! Processando sua solicitação...",
-        timestamp: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
-      };
-      setMessages(prev => [...prev, aiResponse]);
-      setIsTyping(false);
-    }, 1500);
   };
 
   return (
@@ -131,17 +89,17 @@ export const ChatArea = () => {
           </div>
         ))}
         
-        {isTyping && (
+        {isLoading && (
           <div className="flex gap-3 justify-start animate-fade-in">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center shrink-0 border border-primary/30 glow-box-cyan animate-glow-pulse">
-              <Sparkles className="w-4 h-4 text-primary" />
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary/20 to-background/50 flex items-center justify-center border border-primary/30 glow-box-primary animate-glow-pulse overflow-hidden">
+              <img src={underallLogo} alt="Under All Logo" className="w-7 h-7 object-contain" />
             </div>
             <div className="glass-soft border border-primary/15 shadow-[0_4px_20px_rgba(0,0,0,0.3)] rounded-2xl p-4">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-primary animate-bounce" />
                 <div className="w-2 h-2 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0.1s' }} />
                 <div className="w-2 h-2 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0.2s' }} />
-                <span className="text-xs text-muted-foreground font-mono ml-2">Brain All está pensando...</span>
+                <span className="text-xs text-muted-foreground font-mono ml-2">Under All está pensando...</span>
               </div>
             </div>
           </div>
@@ -177,8 +135,8 @@ export const ChatArea = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Digite sua mensagem..."
-              disabled={isTyping}
-              className="min-h-[80px] glass-panel border-primary/20 focus-visible:border-primary focus-visible:shadow-[0_0_20px_rgba(0,255,255,0.2)] resize-none transition-all duration-300 font-mono text-sm disabled:opacity-50"
+              disabled={isLoading}
+              className="min-h-[80px] glass-panel border-primary/20 focus-visible:border-primary focus-visible:shadow-[0_0_20px_rgba(84,117,98,0.2)] resize-none transition-all duration-300 font-mono text-sm disabled:opacity-50"
               onKeyDown={(e) => {
                 if (e.key === "Enter" && !e.shiftKey) {
                   e.preventDefault();
@@ -194,8 +152,8 @@ export const ChatArea = () => {
           <Button
             onClick={handleSend}
             size="icon"
-            disabled={!input.trim() || isTyping}
-            className="w-14 h-14 shrink-0 bg-gradient-to-br from-primary to-primary-dim hover:from-primary-glow hover:to-primary disabled:opacity-30 disabled:cursor-not-allowed glow-box-cyan transition-all duration-300 hover:scale-105 disabled:hover:scale-100"
+            disabled={!input.trim() || isLoading}
+            className="w-14 h-14 shrink-0 bg-gradient-to-br from-primary to-primary-dim hover:from-primary-glow hover:to-primary disabled:opacity-30 disabled:cursor-not-allowed glow-box-primary transition-all duration-300 hover:scale-105 disabled:hover:scale-100"
           >
             <Send className="w-5 h-5" />
           </Button>
