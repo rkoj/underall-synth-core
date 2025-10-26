@@ -36,7 +36,7 @@ export const useStreamingChat = () => {
     const assistantId = messages.length + 2;
 
     try {
-      const CHAT_URL = `https://ltwjlqzttbqblvlmmfka.supabase.co/functions/v1/chat`;
+      const CHAT_URL = `https://brain.underall.com/api/chat`;
       
       const response = await fetch(CHAT_URL, {
         method: "POST",
