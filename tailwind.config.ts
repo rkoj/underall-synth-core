@@ -60,7 +60,8 @@ export default {
       },
       fontFamily: {
         mono: ['JetBrains Mono', 'Courier New', 'monospace'],
-        display: ['Orbitron', 'sans-serif'],
+        display: ['Sora', 'sans-serif'],
+        sans: ['Public Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -27,11 +27,11 @@ const Index = () => {
             <div className="flex items-center gap-4">
               <SidebarTrigger className="hover:bg-primary/10 transition-colors" />
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center border border-primary/30 glow-box-cyan animate-glow-pulse">
-                  <span className="text-primary font-bold text-lg glow-cyan">BA</span>
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center border border-primary/30 glow-box-primary animate-glow-pulse">
+                  <span className="text-primary font-bold text-lg glow-primary">UA</span>
                 </div>
                 <div>
-                  <h1 className="font-display font-bold text-xl text-primary glow-cyan tracking-tight">BRAIN ALL</h1>
+                  <h1 className="font-display font-bold text-xl text-primary glow-primary tracking-tight">UNDER ALL</h1>
                   <p className="text-xs text-muted-foreground font-mono">Intelligence System v1.5</p>
                 </div>
               </div>

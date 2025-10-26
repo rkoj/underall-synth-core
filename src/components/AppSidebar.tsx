@@ -30,13 +30,13 @@ export function AppSidebar() {
     <Sidebar className="border-r border-primary/20 glass-intense">
       <SidebarHeader className="border-b border-primary/20 p-4">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center border border-primary/30 glow-box-cyan animate-glow-pulse">
-            <span className="text-primary font-bold text-sm glow-cyan">BA</span>
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center border border-primary/30 glow-box-primary animate-glow-pulse">
+            <span className="text-primary font-bold text-sm glow-primary">UA</span>
           </div>
           {!isCollapsed && (
             <div className="animate-fade-in">
-              <h2 className="font-display font-bold text-sm text-primary glow-cyan">Brain All</h2>
-              <p className="text-xs text-muted-foreground font-mono">Manus 1.5 • Active</p>
+              <h2 className="font-display font-bold text-sm text-primary glow-primary">Under All</h2>
+              <p className="text-xs text-muted-foreground font-mono">Intelligence • Active</p>
             </div>
           )}
         </div>

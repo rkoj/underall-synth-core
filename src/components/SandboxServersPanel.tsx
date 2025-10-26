@@ -81,12 +81,12 @@ export const SandboxServersPanel = ({ onClose }: { onClose: () => void }) => {
           <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center border border-primary/30 glow-box-cyan animate-glow-pulse">
             <Server className="w-5 h-5 text-primary" />
           </div>
-          <div>
-            <h3 className="font-display font-bold text-sm text-primary glow-cyan">Sandbox Servers</h3>
-            <p className="text-xs text-muted-foreground font-mono">
-              {servers.filter(s => s.status === "running").length} / {servers.length} ativos
-            </p>
-          </div>
+            <div>
+              <h3 className="font-display font-bold text-sm text-primary glow-primary">Sandbox Servers</h3>
+              <p className="text-xs text-muted-foreground font-mono">
+                {servers.filter(s => s.status === "running").length} / {servers.length} ativos
+              </p>
+            </div>
         </div>
         <Button 
           variant="ghost" 
@@ -144,7 +144,7 @@ export const SandboxServersPanel = ({ onClose }: { onClose: () => void }) => {
         <div className="border-b border-primary/20 p-2 flex items-center justify-between glass-panel">
           <div className="flex items-center gap-2">
             <Terminal className="w-4 h-4 text-primary animate-pulse" />
-            <span className="text-xs font-mono text-primary glow-cyan">{activeServer.name}</span>
+            <span className="text-xs font-mono text-primary glow-primary">{activeServer.name}</span>
             <span className="text-xs text-muted-foreground/50">•</span>
             <span className="text-xs font-mono text-muted-foreground">BRAINDOC.md</span>
           </div>

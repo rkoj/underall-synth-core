@@ -71,7 +71,7 @@ export const ChatArea = () => {
               <Sparkles className="w-5 h-5 text-primary" />
             </div>
             <div>
-              <h2 className="font-display font-bold text-sm text-primary glow-cyan">Brain All Intelligence</h2>
+              <h2 className="font-display font-bold text-sm text-primary glow-primary">Under All Intelligence</h2>
               <p className="text-xs text-muted-foreground font-mono">Neural conversation system</p>
             </div>
           </div>
