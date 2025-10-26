@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AppSidebar } from "@/components/AppSidebar";
 import { ChatArea } from "@/components/ChatArea";
+import { FileBrowser } from "@/components/FileBrowser";
+import { NeuralTerminal } from "@/components/NeuralTerminal";
 import { SandboxServersPanel } from "@/components/SandboxServersPanel";
 import { Button } from "@/components/ui/button";
-import { PanelRightOpen } from "lucide-react";
+import { PanelRightOpen, MessageSquare, FolderOpen, Terminal } from "lucide-react";
 import underallLogo from "@/assets/underall-logo.png";
 
 const Index = () => {
   const [showSandbox, setShowSandbox] = useState(true);
+  const [activeTab, setActiveTab] = useState("chat");
 
   return (
     <SidebarProvider defaultOpen={true}>
@@ -32,8 +36,8 @@ const Index = () => {
                   <img src={underallLogo} alt="Under All Logo" className="w-8 h-8 object-contain" />
                 </div>
                 <div>
-                  <h1 className="font-display font-bold text-xl text-primary glow-primary tracking-tight">UNDER ALL</h1>
-                  <p className="text-xs text-muted-foreground font-mono">Intelligence System v1.5</p>
+                  <h1 className="font-display font-bold text-xl text-primary glow-primary tracking-tight">BRAIN ALL</h1>
+                  <p className="text-xs text-muted-foreground font-mono">Intelligence System v2.0</p>
                 </div>
               </div>
             </div>
@@ -54,10 +58,37 @@ const Index = () => {
             </div>
           </header>
 
-          {/* Main Content */}
+          {/* Main Content with Tabs */}
           <div className="flex-1 flex overflow-hidden">
             <div className="flex-1 p-6">
-              <ChatArea />
+              <Tabs value={activeTab} onValueChange={setActiveTab} className="h-full flex flex-col">
+                <TabsList className="glass-soft border border-primary/20 mb-4 w-fit">
+                  <TabsTrigger value="chat" className="gap-2">
+                    <MessageSquare className="w-4 h-4" />
+                    Chat AI
+                  </TabsTrigger>
+                  <TabsTrigger value="files" className="gap-2">
+                    <FolderOpen className="w-4 h-4" />
+                    File Browser
+                  </TabsTrigger>
+                  <TabsTrigger value="terminal" className="gap-2">
+                    <Terminal className="w-4 h-4" />
+                    Terminal
+                  </TabsTrigger>
+                </TabsList>
+                
+                <TabsContent value="chat" className="flex-1 mt-0">
+                  <ChatArea />
+                </TabsContent>
+                
+                <TabsContent value="files" className="flex-1 mt-0">
+                  <FileBrowser />
+                </TabsContent>
+                
+                <TabsContent value="terminal" className="flex-1 mt-0">
+                  <NeuralTerminal />
+                </TabsContent>
+              </Tabs>
             </div>
             
             {showSandbox && (
@@ -71,3 +102,4 @@ const Index = () => {
 };
 
 export default Index;
+
