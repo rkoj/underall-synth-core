@@ -1,67 +1,26 @@
-import { Activity, Cpu, HardDrive, Zap } from "lucide-react";
-import { AIStatusNode } from "./AIStatusNode";
-import { NeuralTerminal } from "./NeuralTerminal";
-import { SandboxPanel } from "./SandboxPanel";
 import { ControlGrid } from "./ControlGrid";
+import { NeuralTerminal } from "./NeuralTerminal";
 
 export const Dashboard = () => {
   return (
-    <div className="min-h-screen bg-background p-6 space-y-6">
-      {/* Header */}
-      <header className="glass-intense rounded-2xl p-6 border border-primary/20">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-4xl font-display font-bold text-primary glow-cyan">
-              UNDERGLASS.AI
-            </h1>
-            <p className="text-muted-foreground text-sm mt-1 font-mono">
-              Intelligence has a texture.
-            </p>
-          </div>
-          <div className="flex gap-4">
-            <AIStatusNode 
-              icon={Cpu} 
-              label="Neural Core" 
-              status="active" 
-              value="98.3%" 
-            />
-            <AIStatusNode 
-              icon={Activity} 
-              label="Processing" 
-              status="working" 
-              value="2.4k ops/s" 
-            />
-            <AIStatusNode 
-              icon={HardDrive} 
-              label="Storage" 
-              status="idle" 
-              value="47.2 TB" 
-            />
-            <AIStatusNode 
-              icon={Zap} 
-              label="Power" 
-              status="active" 
-              value="342W" 
-            />
-          </div>
+    <div className="space-y-6 animate-fade-in">
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-2xl font-display font-bold text-primary glow-cyan">
+            System Dashboard
+          </h2>
+          <p className="text-sm text-muted-foreground font-mono mt-1">
+            Real-time monitoring and control center
+          </p>
         </div>
-      </header>
-
-      {/* Main Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Neural Terminal - Takes 2 columns */}
-        <div className="lg:col-span-2">
-          <NeuralTerminal />
-        </div>
-
-        {/* Control Grid - Takes 1 column */}
-        <div className="space-y-6">
-          <ControlGrid />
+        <div className="flex items-center gap-2 px-4 py-2 rounded-xl glass-soft border border-primary/20">
+          <div className="w-2 h-2 rounded-full bg-success animate-pulse-neural" />
+          <span className="text-sm text-success font-mono font-semibold">All Systems Operational</span>
         </div>
       </div>
-
-      {/* Sandbox Panel - Full Width */}
-      <SandboxPanel />
+      
+      <ControlGrid />
+      <NeuralTerminal />
     </div>
   );
 };

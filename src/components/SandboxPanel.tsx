@@ -1,65 +1,88 @@
-import { Box, Play, Pause, RotateCcw } from "lucide-react";
+import { Code2, FileCode, FolderOpen, GitBranch, Terminal } from "lucide-react";
 import { Button } from "./ui/button";
+import { ScrollArea } from "./ui/scroll-area";
 
 export const SandboxPanel = () => {
+  const files = [
+    { name: "brain_api.py", icon: FileCode, status: "modified" },
+    { name: "rag_system.ts", icon: FileCode, status: "new" },
+    { name: "memory_store.db", icon: FolderOpen, status: "synced" },
+    { name: "config.yaml", icon: FileCode, status: "synced" },
+  ];
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case "modified": return "text-accent";
+      case "new": return "text-success";
+      case "synced": return "text-primary";
+      default: return "text-muted-foreground";
+    }
+  };
+
   return (
-    <div className="glass-intense rounded-2xl p-6 border border-primary/20">
-      {/* Sandbox Header */}
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-3">
-          <Box className="w-6 h-6 text-primary glow-cyan" />
-          <h2 className="text-2xl font-display font-bold text-primary uppercase tracking-wider">
-            Sandbox Environment
-          </h2>
+    <div className="glass-intense rounded-2xl border border-primary/20 h-full flex flex-col overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
+      {/* Header */}
+      <div className="border-b border-primary/20 p-4 bg-gradient-to-r from-primary/5 to-transparent">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center border border-primary/30 glow-box-cyan animate-glow-pulse">
+            <Code2 className="w-5 h-5 text-primary" />
+          </div>
+          <div>
+            <h3 className="font-display font-bold text-sm text-primary glow-cyan">Sandbox Workspace</h3>
+            <p className="text-xs text-muted-foreground font-mono">Active files: {files.length}</p>
+          </div>
         </div>
+        
         <div className="flex gap-2">
-          <Button variant="ghost" size="icon" className="hover:bg-success/10 hover:text-success">
-            <Play className="w-4 h-4" />
+          <Button size="sm" className="flex-1 bg-gradient-to-r from-primary/20 to-primary/10 hover:from-primary/30 hover:to-primary/20 border border-primary/30 text-primary">
+            <GitBranch className="w-3 h-3 mr-2" />
+            Commit
           </Button>
-          <Button variant="ghost" size="icon" className="hover:bg-accent/10 hover:text-accent">
-            <Pause className="w-4 h-4" />
-          </Button>
-          <Button variant="ghost" size="icon" className="hover:bg-destructive/10 hover:text-destructive">
-            <RotateCcw className="w-4 h-4" />
+          <Button size="sm" className="flex-1 bg-gradient-to-r from-success/20 to-success/10 hover:from-success/30 hover:to-success/20 border border-success/30 text-success">
+            <Terminal className="w-3 h-3 mr-2" />
+            Run
           </Button>
         </div>
       </div>
 
-      {/* Holographic Visualization Area */}
-      <div className="relative h-64 rounded-xl overflow-hidden">
-        {/* Animated Grid Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-success/5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `
-              linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px)
-            `,
-            backgroundSize: '40px 40px',
-          }} />
+      {/* File List */}
+      <ScrollArea className="flex-1 p-3">
+        <div className="space-y-2">
+          {files.map((file, index) => (
+            <button
+              key={file.name}
+              className="w-full p-3 rounded-xl glass-soft hover:bg-primary/10 border border-primary/10 hover:border-primary/30 transition-all duration-300 text-left group animate-fade-in"
+              style={{ animationDelay: `${index * 0.05}s` }}
+            >
+              <div className="flex items-center gap-3">
+                <file.icon className={`w-4 h-4 ${getStatusColor(file.status)} transition-transform group-hover:scale-110`} />
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-mono truncate text-foreground group-hover:text-primary transition-colors">
+                    {file.name}
+                  </p>
+                  <p className="text-xs text-muted-foreground capitalize">{file.status}</p>
+                </div>
+                <div className={`w-2 h-2 rounded-full ${getStatusColor(file.status)} animate-pulse`} />
+              </div>
+            </button>
+          ))}
         </div>
+      </ScrollArea>
 
-        {/* Floating Elements */}
-        <div className="absolute inset-0 flex items-center justify-center gap-8">
-          <div className="w-32 h-32 rounded-full border-4 border-primary/40 animate-pulse-neural glow-cyan" />
-          <div className="w-24 h-24 rounded-full border-4 border-accent/40 animate-float glow-amber" />
-          <div className="w-28 h-28 rounded-full border-4 border-success/40 animate-pulse glow-neon" />
-        </div>
-
-        {/* Status Overlay */}
-        <div className="absolute bottom-4 left-4 right-4 glass-panel rounded-lg p-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-xs font-mono text-muted-foreground uppercase">Status</p>
-              <p className="text-sm font-mono font-bold text-success">Environment Ready</p>
-            </div>
-            <div>
-              <p className="text-xs font-mono text-muted-foreground uppercase">Active Tests</p>
-              <p className="text-sm font-mono font-bold text-primary">3 Running</p>
-            </div>
-            <div>
-              <p className="text-xs font-mono text-muted-foreground uppercase">Uptime</p>
-              <p className="text-sm font-mono font-bold text-foreground">127:42:18</p>
-            </div>
+      {/* Footer Stats */}
+      <div className="border-t border-primary/20 p-3 glass-panel">
+        <div className="grid grid-cols-3 gap-3 text-center">
+          <div className="space-y-1">
+            <p className="text-xs text-muted-foreground font-mono">Lines</p>
+            <p className="text-sm font-bold text-primary glow-cyan">2,451</p>
+          </div>
+          <div className="space-y-1">
+            <p className="text-xs text-muted-foreground font-mono">Files</p>
+            <p className="text-sm font-bold text-success glow-neon">47</p>
+          </div>
+          <div className="space-y-1">
+            <p className="text-xs text-muted-foreground font-mono">Commits</p>
+            <p className="text-sm font-bold text-accent glow-amber">128</p>
           </div>
         </div>
       </div>
