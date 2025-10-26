@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Send, Sparkles, Paperclip, Mic, MoreVertical } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import underallLogo from "@/assets/underall-logo.png";
 
 interface Message {
   id: number;
@@ -67,8 +68,8 @@ export const ChatArea = () => {
       <div className="border-b border-primary/20 p-4 flex items-center justify-between bg-gradient-to-r from-primary/5 to-transparent backdrop-blur-sm">
         <div className="flex-1">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center border border-primary/30 glow-box-cyan animate-glow-pulse">
-              <Sparkles className="w-5 h-5 text-primary" />
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary/20 to-background/50 flex items-center justify-center border border-primary/30 glow-box-primary animate-glow-pulse overflow-hidden">
+              <img src={underallLogo} alt="Under All Logo" className="w-7 h-7 object-contain" />
             </div>
             <div>
               <h2 className="font-display font-bold text-sm text-primary glow-primary">Under All Intelligence</h2>

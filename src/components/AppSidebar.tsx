@@ -12,6 +12,7 @@ import {
   SidebarHeader,
   useSidebar,
 } from "@/components/ui/sidebar";
+import underallLogo from "@/assets/underall-logo.png";
 
 const conversationItems = [
   { id: 1, title: "Como criar um sandbox para agentes de IA", icon: MessageSquare, time: "2h atrás" },
@@ -30,8 +31,8 @@ export function AppSidebar() {
     <Sidebar className="border-r border-primary/20 glass-intense">
       <SidebarHeader className="border-b border-primary/20 p-4">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center border border-primary/30 glow-box-primary animate-glow-pulse">
-            <span className="text-primary font-bold text-sm glow-primary">UA</span>
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary/20 to-background/50 flex items-center justify-center border border-primary/30 glow-box-primary animate-glow-pulse overflow-hidden">
+            <img src={underallLogo} alt="Under All Logo" className="w-6 h-6 object-contain" />
           </div>
           {!isCollapsed && (
             <div className="animate-fade-in">

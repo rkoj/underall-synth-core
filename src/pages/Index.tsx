@@ -5,6 +5,7 @@ import { ChatArea } from "@/components/ChatArea";
 import { SandboxServersPanel } from "@/components/SandboxServersPanel";
 import { Button } from "@/components/ui/button";
 import { PanelRightOpen } from "lucide-react";
+import underallLogo from "@/assets/underall-logo.png";
 
 const Index = () => {
   const [showSandbox, setShowSandbox] = useState(true);
@@ -27,8 +28,8 @@ const Index = () => {
             <div className="flex items-center gap-4">
               <SidebarTrigger className="hover:bg-primary/10 transition-colors" />
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center border border-primary/30 glow-box-primary animate-glow-pulse">
-                  <span className="text-primary font-bold text-lg glow-primary">UA</span>
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/20 to-background/50 flex items-center justify-center border border-primary/30 glow-box-primary animate-glow-pulse overflow-hidden">
+                  <img src={underallLogo} alt="Under All Logo" className="w-8 h-8 object-contain" />
                 </div>
                 <div>
                   <h1 className="font-display font-bold text-xl text-primary glow-primary tracking-tight">UNDER ALL</h1>
