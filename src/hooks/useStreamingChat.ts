@@ -44,35 +44,19 @@ export const useStreamingChat = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          messages: [
-            ...messages.map(m => ({ role: m.role, content: m.content })),
-            { role: "user", content: userMessage }
-          ],
+          message: userMessage,
+          model: "llama3.1:8b"
         }),
       });
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         
-        if (response.status === 429) {
-          toast({
-            title: "Rate Limit",
-            description: "Muitas solicitações. Tente novamente em alguns instantes.",
-            variant: "destructive",
-          });
-        } else if (response.status === 402) {
-          toast({
-            title: "Pagamento Necessário",
-            description: "Créditos insuficientes. Adicione fundos ao workspace.",
-            variant: "destructive",
-          });
-        } else {
-          toast({
-            title: "Erro",
-            description: errorData.error || "Erro ao comunicar com AI",
-            variant: "destructive",
-          });
-        }
+        toast({
+          title: "Erro",
+          description: errorData.detail || errorData.error || "Erro ao comunicar com AI",
+          variant: "destructive",
+        });
         
         setIsLoading(false);
         return;
@@ -170,3 +154,4 @@ export const useStreamingChat = () => {
 
   return { messages, sendMessage, isLoading };
 };
+
